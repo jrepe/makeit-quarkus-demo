@@ -16,4 +16,5 @@ gcloud run deploy makeit-quarkus-demo \
   --image $image \
   --platform managed \
   --region europe-west1 \
-  --allow-unauthenticated
+  --allow-unauthenticated \
+  --min-instances 1
