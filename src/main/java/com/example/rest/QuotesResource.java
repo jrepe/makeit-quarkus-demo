@@ -29,7 +29,9 @@ public class QuotesResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getQuoteOfTheDay() {
         log.info("Fetching Quote of the Day from external service");
-        return Response.ok().entity(quotesClient.getQuoteOfTheDay().get(0)).build();
+        var quoteOfTheDay = quotesClient.getQuoteOfTheDay().get(0);
+        log.info("Quote of the day by {}: '{}'", quoteOfTheDay.author(), quoteOfTheDay.quote());
+        return Response.ok().entity(quoteOfTheDay).build();
     }
 
     @GET
@@ -38,7 +40,9 @@ public class QuotesResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getRandomQuote() {
         log.info("Fetching Random Quote from external service");
-        return Response.ok().entity(quotesClient.getRandomQuote().get(0)).build();
+        var randomQuote = quotesClient.getRandomQuote().get(0);
+        log.info("Random quote by {}: '{}'", randomQuote.author(), randomQuote.quote());
+        return Response.ok().entity(randomQuote).build();
     }
 
     @GET
