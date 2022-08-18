@@ -44,13 +44,4 @@ public class QuotesResource {
         log.info("Random quote by {}: '{}'", randomQuote.author(), randomQuote.quote());
         return Response.ok().entity(randomQuote).build();
     }
-
-    @GET
-    @Path("/error")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getNothingButErrors() {
-        log.info("Fetching more Amazing Quote's from external service");
-        throw new ExternalException("Oh noes! I have an internal error!");
-    }
 }
